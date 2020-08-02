@@ -36,8 +36,27 @@
    msg)
   (:export-accessors))
 
+(defjsonclass league ()
+  ((id :json-key "_id")
+   name tiebreakers subleagues)
+  (:export-accessors))
+
+(defjsonclass subleague ()
+  ((id :json-key "_id")
+   divisions name))
+
+
+
 (defplugs "https://blaseball.com"
     ("allDivisions" (:list division))
+    ("division?id={id}" division)
+
     ("allTeams" (:list team))
+    ("team?id={id}" team)
+
     ("players?ids={ids}" (:list player))
+
+    ("league?id={id}" (:list league))
+    ("subleague?id={id}" (:list subleague))
+
     ("globalEvents" (:list event)))

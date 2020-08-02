@@ -39,6 +39,18 @@ returns a list of events (ticker messages)
 
 ---
 
+`(get-league-by-id id)`
+
+returns a list of league objects associated with ID
+
+---
+
+`(get-subleague-by-id id)`
+
+returns a list of subleagues associated with ID
+
+---
+
 ## Classes
 
 `event`
@@ -174,6 +186,33 @@ returns a list of events (ticker messages)
 `name`: string - name of division
 
 `teams`: list of strings - IDs of all teams in division
+
+---
+
+`league`
+
+### Slots
+
+
+`id`: string
+
+`name`: string - name of the league
+
+`subleagues`: list of strings - IDs of the subleague that belong to the league
+
+`tiebreakers`: string - unknown
+
+---
+
+`subleague`
+
+### Slots
+
+`id`: string
+
+`name`: string - subleague name
+
+`divisions`: list of strings - divisions the subleague belongs to
 
 ---
 
