@@ -11,6 +11,8 @@
 	   :get-league-by-id
 	   :get-subleague-by-id
 
+	   :get-game-by-id
+
 	   :get-all-divisions
 	   :get-division-by-id 
 

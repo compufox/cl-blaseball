@@ -24,6 +24,12 @@ returns a list of all team objects
 
 ---
 
+`(get-team-by-id id)`
+
+returns a team based off of ID
+
+---
+
 `(get-players-by-ids id)`
 
 returns a list of players based off of ID
@@ -48,6 +54,12 @@ returns a list of league objects associated with ID
 `(get-subleague-by-id id)`
 
 returns a list of subleagues associated with ID
+
+---
+
+`(get-game-by-id id)`
+
+returns the results of a game based off of ID
 
 ---
 
