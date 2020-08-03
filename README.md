@@ -143,7 +143,7 @@ returns a list of subleagues associated with ID
 
 `bench`: list of strings - IDs of players on the team but not in the game
 
-`season-attributes`: list of strings - unknown
+`season-attributes`: list of strings - blessings bestowed to the team for the season
 
 `permanent-attributes`: list of strings - unknown
 
