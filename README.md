@@ -127,6 +127,14 @@ returns a list of subleagues associated with ID
 
 `deceased`: boolean - whether the player is dead or not
 
+`peanut-allergy`: boolean - whether the player has a peanut allergy or not
+
+`cinnamon`: float - unknown
+
+`fate`: integer - unknown
+
+`bat`: string - unknown
+
 ---
 
 `team`

@@ -27,7 +27,8 @@
    patheticism ruthlessness shakespearianism
    tenaciousness thwackability tragicness
    unthwackability watchfulness pressurization
-   total-fingers soul deceased)
+   total-fingers soul deceased peanut-allergy
+   cinnamon fate bat)
   (:export-accessors))
 
 (defjsonclass event ()
