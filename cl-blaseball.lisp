@@ -48,6 +48,7 @@
 
 (defjsonclass game ()
   ((id :json-key "_id")
+   (phase-state :json-key "phase")
    bases-occupied base-runners outcomes terminology
    last-update rules statsheet away-pitcher
    away-pitcher-name away-batter away-batter-name
@@ -58,7 +59,7 @@
    home-batter-name home-team home-team-name 
    home-team-nickname home-team-color home-team-emoji
    home-odds home-strikes home-score home-team-batter-count
-   season is-postseason day phase game-complete finalized
+   season is-postseason day game-complete finalized
    game-start half-inning outs half-inning-score inning
    top-of-inning at-bat-balls at-bat-strikes series-index
    series-length shame weather baserunner-count)
