@@ -5,13 +5,20 @@
 (setq plugger:*api-root* "/database/")
 
 (defjsonclass division ()
-  ((id :json-key "_id") name teams)
+  ((id :json-key "_id")
+   (teams :json-type :list)
+   name)
   (:export-accessors))
 
 (defjsonclass team ()
   ((id :json-key "_id")
-   lineup rotation bullpen bench season-attributes
-   permanent-attributes full-name location
+   (lineup :json-type :list)
+   (rotation :json-type :list)
+   (bullpen :json-type :list)
+   (bench :json-type :list)
+   (season-attributes :json-type :list)
+   (permanent-attributes :json-type :list)
+   full-name location
    main-color nickname secondary-color
    shorthand emoji slogan shame-runs
    total-shames total-shamings season-shames
@@ -39,7 +46,9 @@
 
 (defjsonclass league ()
   ((id :json-key "_id")
-   name tiebreakers subleagues)
+   (tiebreakers :json-type :list)
+   (subleagues :json-type :list)
+   name)
   (:export-accessors))
 
 (defjsonclass subleague ()
@@ -49,8 +58,10 @@
 (defjsonclass game ()
   ((id :json-key "_id")
    (phase-state :json-key "phase")
-   bases-occupied base-runners outcomes terminology
-   last-update rules statsheet away-pitcher
+   (bases-occupied :json-type :list)
+   (base-runners :json-type :list)
+   (outcomes :json-type :list)
+   terminology last-update rules statsheet away-pitcher
    away-pitcher-name away-batter away-batter-name
    away-team away-team-name away-team-nickname
    away-team-color away-team-emoji away-odds
@@ -65,6 +76,44 @@
    series-length shame weather baserunner-count)
   (:export-accessors))
 
+(defjsonclass decree ()
+  ((id :json-key "_id")
+   (kind :json-key "type")
+   title description votes)
+  (:export-accessors))
+
+(defjsonclass blessing ()
+  ((id :json-key "_id")
+   (kind :json-key "type")
+   title description votes value)
+  (:export-accessors))
+
+(defjsonclass election ()
+  ((decrees :json-type (:list decree))
+   (blessings :json-key "bonuses"
+	      :json-type (:list blessing))
+   decrees-to-pass)
+  (:export-accessors))
+
+(defjsonclass playoff ()
+  ((id :json-key "_id")
+   (v :json-key "__v")
+   (rounds :json-type :list)
+   name number-of-rounds playoff-day season
+   winner tomorrow-round )
+  (:export-accessors))
+
+(defjsonclass election-results ()
+  ((id :json-key "_id")
+   (v :json-key "__v")
+   (blessings :json-key "bonusResults"
+	      :json-type :list)
+   (decrees :json-key "decreeResults"
+	    :json-type :list)
+   (total-blessing-votes :json-key "totalBonusVotes")
+   total-decree-votes name season vote-count)
+  (:export-accessors))
+
 (defplugs "https://blaseball.com"
     ("allDivisions" (:list division))
     ("division?id={id}" division)
@@ -73,6 +122,17 @@
     ("team?id={id}" team)
 
     ("gameById/{id}" game)
+
+    ("offseasonSetup" election :fn-name get-election)
+
+    ("offseasonRecap?season={season}" election-results
+				      :fn-name get-election-results-by-season)
+
+    ("bonusResults?ids={ids}" blessing :fn-name get-blessing-results-by-ids)
+
+    ("decreeResults?ids={ids}" decree)
+
+    ("playoffs?number={number}" playoff)
 
     ("players?ids={ids}" (:list player))
 
