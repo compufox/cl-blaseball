@@ -53,7 +53,8 @@
 
 (defjsonclass subleague ()
   ((id :json-key "_id")
-   divisions name))
+   divisions name)
+  (:export-accessors))
 
 (defjsonclass game ()
   ((id :json-key "_id")

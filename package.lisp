@@ -6,7 +6,8 @@
   (:import-from :plugger
 		:defjsonclass
                 :defplugs)
-  (:export :get-players-by-ids
+  (:export ;;functions
+           :get-players-by-ids
 
 	   :get-league-by-id
 	   :get-subleague-by-id
@@ -19,5 +20,19 @@
 	   :get-all-teams
 	   :get-team-by-id
 
-	   :get-global-events))
+	   :get-election
+	   :get-election-results-by-season
+
+	   :get-blessing-results-by-id
+	   :get-decree-results-by-id
+
+	   :get-playoffs-by-number
+
+	   :get-global-events
+
+	   ;; classes
+	   :division :team :player :event
+	   :league :subleague :game 
+	   :decree :blessing :election
+	   :playoff :election-results))
   
