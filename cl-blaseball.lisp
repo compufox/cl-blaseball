@@ -114,7 +114,7 @@
    (decrees :json-key "decreeResults"
 	    :json-type :list)
    (total-blessing-votes :json-key "totalBonusVotes"
-			 :votes 0)
+			 :initform 0)
    (total-decree-votes :initform 0)
    (vote-count :initform 0)
    name season)
