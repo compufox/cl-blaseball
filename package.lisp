@@ -30,6 +30,10 @@
 
 	   :get-global-events
 
+	   ;; work on the data we've gotten
+	   :calculate-batter-rating
+	   :calculate-pitcher-rating
+
 	   ;; classes
 	   :division :team :player :event
 	   :league :subleague :game 

@@ -141,3 +141,27 @@
     ("subleague?id={id}" (:list subleague))
 
     ("globalEvents" (:list event)))
+
+
+(defun calculate-pitcher-rating (player)
+  "calculates the star rating PLAYER has as a pitcher"
+  (with-slots (shakespearianism unthwackability coldness
+	       overpowerment ruthlessness) player
+    (let ((base (* (expt shakespearianism .1) (expt unthwackability .5)
+		   (expt coldness .025) (expt overpowerment .15)
+		   (expt ruthlessness .4))))
+      (coerce (/ (round (realpart (/ (* 10 base) 2)) .5)
+		 2)
+	      'float))))
+
+(defun calculate-batter-rating (player)
+  "calculates the star rating PLAYER has as a batter"
+  (with-slots (tragicness thwackability moxie divinity
+	       musclitude patheticism martyrdom) player
+    (let ((base (* (expt (1- tragicness) .01) (expt thwackability .35)
+		   (expt moxie .075) (expt divinity .35) (expt musclitude .075)
+		   (expt (1- patheticism) .05) (expt martyrdom .02))))
+      (coerce (/ (round (realpart (/ (* 10 base) 2)) .5)
+		 2)
+	      'float))))
+  
