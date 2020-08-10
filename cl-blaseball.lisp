@@ -80,13 +80,15 @@
 (defjsonclass decree ()
   ((id :json-key "_id")
    (kind :json-key "type")
-   title description votes)
+   (votes :initform 0)
+   title description)
   (:export-accessors))
 
 (defjsonclass blessing ()
   ((id :json-key "_id")
    (kind :json-key "type")
-   title description votes value)
+   (votes :initform 0)
+   title description value)
   (:export-accessors))
 
 (defjsonclass election ()
@@ -101,7 +103,7 @@
    (v :json-key "__v")
    (rounds :json-type :list)
    name number-of-rounds playoff-day season
-   winner tomorrow-round )
+   winner tomorrow-round)
   (:export-accessors))
 
 (defjsonclass election-results ()
@@ -111,8 +113,11 @@
 	      :json-type :list)
    (decrees :json-key "decreeResults"
 	    :json-type :list)
-   (total-blessing-votes :json-key "totalBonusVotes")
-   total-decree-votes name season vote-count)
+   (total-blessing-votes :json-key "totalBonusVotes"
+			 :votes 0)
+   (total-decree-votes :initform 0)
+   (vote-count :initform 0)
+   name season)
   (:export-accessors))
 
 (defplugs "https://blaseball.com"
